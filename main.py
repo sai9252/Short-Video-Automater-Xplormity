@@ -44,7 +44,7 @@ for tp in top_topics:
 
     while len(selected_elements) < 5 and iteration_count < max_iterations:
         index = random.randint(0, data_length - 1)
-        # index=22
+        # index=14
         logger.info(f"selected index: {index}")
         if index not in selected_elements:
             current_data = data[index]
@@ -70,7 +70,7 @@ for tp in top_topics:
 
         if not os.path.exists(save_text_to):
             try:
-                get_and_save_transcript(current_data,save_text_to,logger)
+                get_and_save_transcript(current_data,save_text_to,logger) 
             except:
                 logger.info("Error Obtaining Transcript")
                 break
@@ -82,7 +82,7 @@ for tp in top_topics:
             st = get_search_terms(current_data["title"],3,script)
             retries = 1
 
-            query = st            
+            query = st
             logger.info(f"Query: {query}")
             while retries <= 3 and not get_and_save_videos(logger,query,save_videos_to):
                 logger.info("Failed to get videos, trying again...")
@@ -99,7 +99,7 @@ for tp in top_topics:
 
         files = os.listdir(save_videos_to)
         video_urls = [f"{save_videos_to}/{f}" for f in files if f.endswith(".mp4")]
-        logger.info(f"Found {len(video_urls)} videos")        
+        logger.info(f"Found {len(video_urls)} videos")
         
         # get srt
         save_subtitles_to=f"{index_folder}/subtitles_{tp}.srt"
@@ -128,7 +128,7 @@ for tp in top_topics:
         
         logger.info(f"Got Video Metadata")
         break
-       
+
 
 
     # save_upload_to=f"{index_folder}/upload_{tp}.json"
